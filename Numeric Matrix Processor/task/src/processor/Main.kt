@@ -74,10 +74,8 @@ fun multiplyMatrices(scanner: Scanner) {
     } else {
         for (i in m1.indices) {
             for (j in m2[0].indices) {
-
                 var cij = 0.0
                 for (k in m2.indices) {
-//                    println("${m1[i][k]} X ${m2[k][j]}")
                     cij += (m1[i][k] * m2[k][j])
                 }
                 print("$cij ")
