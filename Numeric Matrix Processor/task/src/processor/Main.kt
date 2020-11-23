@@ -19,6 +19,7 @@ fun main() {
                 multiplyMatrices(scanner)
             }
         }
+        println()
     } while (choice != 0)
 }
 
@@ -31,11 +32,14 @@ fun printMenu() {
 }
 
 fun addMatrices(scanner: Scanner) {
-    val m1 = getMatrix(scanner)
-    val m2 = getMatrix(scanner)
+    println("Enter the size of the first matrix: ")
+    val m1 = getMatrix(scanner, "first")
+    println("Enter the size of the second matrix: ")
+    val m2 = getMatrix(scanner, "second")
     if (m1.size != m2.size || m1[0].size != m2[0].size) {
-        println("ERROR")
+        println("The operation cannot be performed.")
     } else {
+        println("The result is:")
         for (i in m1.indices) {
             for (j in m1[0].indices) {
                 print("${(m1[i][j] + m2[i][j])} ")
@@ -47,8 +51,11 @@ fun addMatrices(scanner: Scanner) {
 
 
 fun multiplyMatrixByConstant(scanner: Scanner) {
+    println("Enter the size of matrix: ")
     val m1 = getMatrix(scanner)
+    println("Enter constant: ")
     val constant = scanner.nextLine().toDouble()
+    println("The result is:")
     for (i in m1.indices) {
         for (j in m1[0].indices) {
             print("${(m1[i][j] * constant)} ")
@@ -57,24 +64,32 @@ fun multiplyMatrixByConstant(scanner: Scanner) {
     }
 }
 
-//do actual multiplication
 fun multiplyMatrices(scanner: Scanner) {
-    val m1 = getMatrix(scanner)
-    val m2 = getMatrix(scanner)
-    if (m1.size != m2.size || m1[0].size != m2[0].size) {
-        println("ERROR")
+    println("Enter the size of the first matrix: ")
+    val m1 = getMatrix(scanner, "first")
+    println("Enter the size of the second matrix: ")
+    val m2 = getMatrix(scanner, "second")
+    if (m1[0].size != m2.size) {
+        println("The operation cannot be performed.")
     } else {
         for (i in m1.indices) {
-            for (j in m1[0].indices) {
-                print("${(m1[i][j] + m2[i][j])} ")
+            for (j in m2[0].indices) {
+
+                var cij = 0.0
+                for (k in m2.indices) {
+//                    println("${m1[i][k]} X ${m2[k][j]}")
+                    cij += (m1[i][k] * m2[k][j])
+                }
+                print("$cij ")
             }
             println()
         }
     }
 }
 
-fun getMatrix(scanner: Scanner): Array<List<Double>> {
+fun getMatrix(scanner: Scanner, matrix: String = ""): Array<List<Double>> {
     val mRC = scanner.nextLine().split(" ")
+    println("Enter $matrix matrix:")
     return Array(mRC[0].toInt()) {
         scanner.nextLine().trim().split(" ").map { it.toDouble() }
     }
