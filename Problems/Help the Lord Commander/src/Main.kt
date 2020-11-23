@@ -1,1 +1,0 @@
-println(beyondTheWall.contentEquals(backFromTheWall))
