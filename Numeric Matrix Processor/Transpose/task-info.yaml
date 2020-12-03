@@ -1,15 +1,6 @@
 type: edu
 custom_name: stage4
 files:
-- name: src/processor/Main.kt
-  visible: true
-  text: |
-    package processor
-
-    fun main() {
-        println("Hello World!")
-    }
-  learner_created: false
 - name: test/NumericMatrixProcessorTest.java
   visible: false
   text: |
@@ -403,6 +394,15 @@ files:
 
         }
 
+    }
+  learner_created: false
+- name: src/processor/Main.kt
+  visible: true
+  text: |
+    package processor
+
+    fun main() {
+        println("Hello World!")
     }
   learner_created: false
 feedback_link: https://hyperskill.org/projects/87/stages/483/implement#comment
